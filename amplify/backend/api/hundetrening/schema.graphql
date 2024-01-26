@@ -1,4 +1,79 @@
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+type Kurs @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  kursholder: String
+  Hendelse: Hendelse @hasOne
+  Oekter: [Oekt] @hasMany(indexName: "byKurs", fields: ["id"])
+}
 
+type Loep @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  fokus: String
+  egenvurdering: String
+  resultat: String
+  notat: String
+  dommer: String
+  bilde: String
+  hundID: ID! @index(name: "byHund")
+  konkurranseID: ID! @index(name: "byKonkurranse")
+}
+
+type Konkurranse @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Hendelse: Hendelse @hasOne
+  Loeper: [Loep] @hasMany(indexName: "byKonkurranse", fields: ["id"])
+}
+
+type Repetisjon @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  navn: String
+  resultat: String
+  notat: String
+  oektID: ID! @index(name: "byOekt")
+}
+
+type Oekt @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  treningID: ID @index(name: "byTrening")
+  hundID: ID! @index(name: "byHund")
+  fokus: String
+  egenvurdering: String
+  notat: String
+  Repetisjons: [Repetisjon] @hasMany(indexName: "byOekt", fields: ["id"])
+  kursID: ID @index(name: "byKurs")
+}
+
+type Hendelse @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  navn: String
+  sted: String
+  miljoe: String
+  dato: AWSDate
+  type: String
+  handleliste: [String]
+  pakkeliste: [String]
+}
+
+type Trening @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Hendelse: Hendelse @hasOne
+  Oekter: [Oekt] @hasMany(indexName: "byTrening", fields: ["id"])
+}
+
+type Hund @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  brukerID: ID! @index(name: "byBruker")
+  navn: String
+  bursdag: AWSDate
+  titler: [String]
+  rase: String
+  farge: String
+  bilde: String
+  Oekter: [Oekt] @hasMany(indexName: "byHund", fields: ["id"])
+  Loeper: [Loep] @hasMany(indexName: "byHund", fields: ["id"])
+}
+
+type Bruker @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  navn: String
+  Hunder: [Hund] @hasMany(indexName: "byBruker", fields: ["id"])
+}
