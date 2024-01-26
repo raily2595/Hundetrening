@@ -8,16 +8,26 @@ import {
   View,
   Card,
 } from "@aws-amplify/ui-react";
+import "./App.css";
+import { API } from "aws-amplify";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Startside from './sider/Startside';
+import EndreHund from './sider/EndreHund';
+import Profil from './sider/Profil';
+import Meny from './sider/Meny';
 
 function App({ signOut }) {
   return (
-      <View className="App">
-        <Card>
-          <Image src={logo} className="App-logo" alt="logo" />
-          <Heading level={1}>We now have Auth!</Heading>
-        </Card>
-        <Button onClick={signOut}>Sign Out</Button>
-      </View>
+      <Router>
+          <div className="App">
+              <Meny />
+              <Routes>
+                  <Route path="/" element={<Startside />} />
+                  <Route path="/endrehund" element={<EndreHund />} />
+                  <Route path="/profil" element={<Profil />} />
+              </Routes>
+          </div>
+      </Router>
   );
 }
 
