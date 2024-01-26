@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyd4acbef6bc974-staging-113922-authRole",
+      "UnauthRoleArn": "arn:aws:iam::927964485773:role/amplify-amplifyd4acbef6bc974-staging-113922-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::927964485773:role/amplify-amplifyd4acbef6bc974-staging-113922-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-amplifyd4acbef6bc974-staging-113922-deployment",
+      "UnauthRoleName": "amplify-amplifyd4acbef6bc974-staging-113922-unauthRole",
+      "StackName": "amplify-amplifyd4acbef6bc974-staging-113922",
+      "StackId": "arn:aws:cloudformation:eu-north-1:927964485773:stack/amplify-amplifyd4acbef6bc974-staging-113922/8caeede0-bc3f-11ee-802a-0a5f63687024",
+      "AmplifyAppId": "d3doxry7uk1tt9"
+    },
+    "categories": {
+      "auth": {
+        "hundetreningccef434a": {}
+      }
+    }
+  }
+}
