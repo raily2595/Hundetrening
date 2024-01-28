@@ -18,7 +18,6 @@ import Profil from './sider/Profil';
 import Meny from './sider/Meny';
 import {useEffect, useState} from "react";
 import { generateClient } from "aws-amplify/api";
-import {Hund} from "./models";
 
 const client = generateClient()
 
@@ -45,7 +44,7 @@ const App = ({ signOut }) => {
                 query: createHund,
                 variables: {
                     input: {
-                        "brukerID": Date.now() * Math.random(),
+                        "brukerID": "e30d50fd-e036-42b5-9a93-8abf992bbe49",
                         "navn": form.get("navn"),
                         "bursdag": "1970-01-01Z",
                         "titler": [],
@@ -82,9 +81,9 @@ const App = ({ signOut }) => {
           <View as="form" margin="3rem 0" onSubmit={nyHund}>
               <Flex direction="row" justifyContent="center">
                   <TextField
-                      navn="navn"
+                      name="navn"
                       placeholder="Hund navn"
-                      label="Hund navn"
+                      label="navn"
                       labelHidden
                       variation="quiet"
                       required
