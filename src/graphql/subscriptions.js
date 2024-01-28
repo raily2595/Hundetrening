@@ -23,7 +23,6 @@ export const onCreateKurs = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -78,7 +77,6 @@ export const onUpdateKurs = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -133,7 +131,6 @@ export const onDeleteKurs = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -176,7 +173,6 @@ export const onCreateLoep = /* GraphQL */ `
       notat
       dommer
       bilde
-      hundID
       konkurranseID
       createdAt
       updatedAt
@@ -194,7 +190,6 @@ export const onUpdateLoep = /* GraphQL */ `
       notat
       dommer
       bilde
-      hundID
       konkurranseID
       createdAt
       updatedAt
@@ -212,7 +207,6 @@ export const onDeleteLoep = /* GraphQL */ `
       notat
       dommer
       bilde
-      hundID
       konkurranseID
       createdAt
       updatedAt
@@ -248,7 +242,6 @@ export const onCreateKonkurranse = /* GraphQL */ `
           notat
           dommer
           bilde
-          hundID
           konkurranseID
           createdAt
           updatedAt
@@ -292,7 +285,6 @@ export const onUpdateKonkurranse = /* GraphQL */ `
           notat
           dommer
           bilde
-          hundID
           konkurranseID
           createdAt
           updatedAt
@@ -336,7 +328,6 @@ export const onDeleteKonkurranse = /* GraphQL */ `
           notat
           dommer
           bilde
-          hundID
           konkurranseID
           createdAt
           updatedAt
@@ -405,7 +396,6 @@ export const onCreateOekt = /* GraphQL */ `
     onCreateOekt(filter: $filter) {
       id
       treningID
-      hundID
       fokus
       egenvurdering
       notat
@@ -435,7 +425,6 @@ export const onUpdateOekt = /* GraphQL */ `
     onUpdateOekt(filter: $filter) {
       id
       treningID
-      hundID
       fokus
       egenvurdering
       notat
@@ -465,7 +454,6 @@ export const onDeleteOekt = /* GraphQL */ `
     onDeleteOekt(filter: $filter) {
       id
       treningID
-      hundID
       fokus
       egenvurdering
       notat
@@ -562,7 +550,6 @@ export const onCreateTrening = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -616,7 +603,6 @@ export const onUpdateTrening = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -670,7 +656,6 @@ export const onDeleteTrening = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -714,54 +699,6 @@ export const onCreateHund = /* GraphQL */ `
       rase
       farge
       bilde
-      Oekter {
-        items {
-          id
-          treningID
-          hundID
-          fokus
-          egenvurdering
-          notat
-          Repetisjons {
-            items {
-              id
-              navn
-              resultat
-              notat
-              oektID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          kursID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      Loeper {
-        items {
-          id
-          fokus
-          egenvurdering
-          resultat
-          notat
-          dommer
-          bilde
-          hundID
-          konkurranseID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
@@ -779,54 +716,6 @@ export const onUpdateHund = /* GraphQL */ `
       rase
       farge
       bilde
-      Oekter {
-        items {
-          id
-          treningID
-          hundID
-          fokus
-          egenvurdering
-          notat
-          Repetisjons {
-            items {
-              id
-              navn
-              resultat
-              notat
-              oektID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          kursID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      Loeper {
-        items {
-          id
-          fokus
-          egenvurdering
-          resultat
-          notat
-          dommer
-          bilde
-          hundID
-          konkurranseID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
@@ -844,54 +733,6 @@ export const onDeleteHund = /* GraphQL */ `
       rase
       farge
       bilde
-      Oekter {
-        items {
-          id
-          treningID
-          hundID
-          fokus
-          egenvurdering
-          notat
-          Repetisjons {
-            items {
-              id
-              navn
-              resultat
-              notat
-              oektID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          kursID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      Loeper {
-        items {
-          id
-          fokus
-          egenvurdering
-          resultat
-          notat
-          dommer
-          bilde
-          hundID
-          konkurranseID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
@@ -913,44 +754,6 @@ export const onCreateBruker = /* GraphQL */ `
           rase
           farge
           bilde
-          Oekter {
-            items {
-              id
-              treningID
-              hundID
-              fokus
-              egenvurdering
-              notat
-              Repetisjons {
-                nextToken
-                __typename
-              }
-              kursID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          Loeper {
-            items {
-              id
-              fokus
-              egenvurdering
-              resultat
-              notat
-              dommer
-              bilde
-              hundID
-              konkurranseID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
           createdAt
           updatedAt
           __typename
@@ -979,44 +782,6 @@ export const onUpdateBruker = /* GraphQL */ `
           rase
           farge
           bilde
-          Oekter {
-            items {
-              id
-              treningID
-              hundID
-              fokus
-              egenvurdering
-              notat
-              Repetisjons {
-                nextToken
-                __typename
-              }
-              kursID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          Loeper {
-            items {
-              id
-              fokus
-              egenvurdering
-              resultat
-              notat
-              dommer
-              bilde
-              hundID
-              konkurranseID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
           createdAt
           updatedAt
           __typename
@@ -1045,44 +810,6 @@ export const onDeleteBruker = /* GraphQL */ `
           rase
           farge
           bilde
-          Oekter {
-            items {
-              id
-              treningID
-              hundID
-              fokus
-              egenvurdering
-              notat
-              Repetisjons {
-                nextToken
-                __typename
-              }
-              kursID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          Loeper {
-            items {
-              id
-              fokus
-              egenvurdering
-              resultat
-              notat
-              dommer
-              bilde
-              hundID
-              konkurranseID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
           createdAt
           updatedAt
           __typename

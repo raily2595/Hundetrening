@@ -13,7 +13,6 @@ type Loep @model @auth(rules: [{allow: public}]) {
   notat: String
   dommer: String
   bilde: String
-  hundID: ID! @index(name: "byHund")
   konkurranseID: ID! @index(name: "byKonkurranse")
 }
 
@@ -34,7 +33,6 @@ type Repetisjon @model @auth(rules: [{allow: public}]) {
 type Oekt @model @auth(rules: [{allow: public}]) {
   id: ID!
   treningID: ID @index(name: "byTrening")
-  hundID: ID! @index(name: "byHund")
   fokus: String
   egenvurdering: String
   notat: String
@@ -68,8 +66,6 @@ type Hund @model @auth(rules: [{allow: public}]) {
   rase: String
   farge: String
   bilde: String
-  Oekter: [Oekt] @hasMany(indexName: "byHund", fields: ["id"])
-  Loeper: [Loep] @hasMany(indexName: "byHund", fields: ["id"])
 }
 
 type Bruker @model @auth(rules: [{allow: public}]) {
@@ -77,3 +73,4 @@ type Bruker @model @auth(rules: [{allow: public}]) {
   navn: String
   Hunder: [Hund] @hasMany(indexName: "byBruker", fields: ["id"])
 }
+ 

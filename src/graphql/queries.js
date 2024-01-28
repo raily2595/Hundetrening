@@ -23,7 +23,6 @@ export const getKurs = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -83,7 +82,6 @@ export const listKurs = /* GraphQL */ `
           items {
             id
             treningID
-            hundID
             fokus
             egenvurdering
             notat
@@ -129,7 +127,6 @@ export const getLoep = /* GraphQL */ `
       notat
       dommer
       bilde
-      hundID
       konkurranseID
       createdAt
       updatedAt
@@ -152,41 +149,6 @@ export const listLoeps = /* GraphQL */ `
         notat
         dommer
         bilde
-        hundID
-        konkurranseID
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const loepsByHundID = /* GraphQL */ `
-  query LoepsByHundID(
-    $hundID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelLoepFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    loepsByHundID(
-      hundID: $hundID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        fokus
-        egenvurdering
-        resultat
-        notat
-        dommer
-        bilde
-        hundID
         konkurranseID
         createdAt
         updatedAt
@@ -220,7 +182,6 @@ export const loepsByKonkurranseID = /* GraphQL */ `
         notat
         dommer
         bilde
-        hundID
         konkurranseID
         createdAt
         updatedAt
@@ -257,7 +218,6 @@ export const getKonkurranse = /* GraphQL */ `
           notat
           dommer
           bilde
-          hundID
           konkurranseID
           createdAt
           updatedAt
@@ -304,7 +264,6 @@ export const listKonkurranses = /* GraphQL */ `
             notat
             dommer
             bilde
-            hundID
             konkurranseID
             createdAt
             updatedAt
@@ -394,7 +353,6 @@ export const getOekt = /* GraphQL */ `
     getOekt(id: $id) {
       id
       treningID
-      hundID
       fokus
       egenvurdering
       notat
@@ -429,7 +387,6 @@ export const listOekts = /* GraphQL */ `
       items {
         id
         treningID
-        hundID
         fokus
         egenvurdering
         notat
@@ -475,53 +432,6 @@ export const oektsByTreningID = /* GraphQL */ `
       items {
         id
         treningID
-        hundID
-        fokus
-        egenvurdering
-        notat
-        Repetisjons {
-          items {
-            id
-            navn
-            resultat
-            notat
-            oektID
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        kursID
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const oektsByHundID = /* GraphQL */ `
-  query OektsByHundID(
-    $hundID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelOektFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    oektsByHundID(
-      hundID: $hundID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        treningID
-        hundID
         fokus
         egenvurdering
         notat
@@ -567,7 +477,6 @@ export const oektsByKursID = /* GraphQL */ `
       items {
         id
         treningID
-        hundID
         fokus
         egenvurdering
         notat
@@ -658,7 +567,6 @@ export const getTrening = /* GraphQL */ `
         items {
           id
           treningID
-          hundID
           fokus
           egenvurdering
           notat
@@ -717,7 +625,6 @@ export const listTrenings = /* GraphQL */ `
           items {
             id
             treningID
-            hundID
             fokus
             egenvurdering
             notat
@@ -764,54 +671,6 @@ export const getHund = /* GraphQL */ `
       rase
       farge
       bilde
-      Oekter {
-        items {
-          id
-          treningID
-          hundID
-          fokus
-          egenvurdering
-          notat
-          Repetisjons {
-            items {
-              id
-              navn
-              resultat
-              notat
-              oektID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          kursID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      Loeper {
-        items {
-          id
-          fokus
-          egenvurdering
-          resultat
-          notat
-          dommer
-          bilde
-          hundID
-          konkurranseID
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
       createdAt
       updatedAt
       __typename
@@ -834,54 +693,6 @@ export const listHunds = /* GraphQL */ `
         rase
         farge
         bilde
-        Oekter {
-          items {
-            id
-            treningID
-            hundID
-            fokus
-            egenvurdering
-            notat
-            Repetisjons {
-              items {
-                id
-                navn
-                resultat
-                notat
-                oektID
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            kursID
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        Loeper {
-          items {
-            id
-            fokus
-            egenvurdering
-            resultat
-            notat
-            dommer
-            bilde
-            hundID
-            konkurranseID
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         __typename
@@ -915,54 +726,6 @@ export const hundsByBrukerID = /* GraphQL */ `
         rase
         farge
         bilde
-        Oekter {
-          items {
-            id
-            treningID
-            hundID
-            fokus
-            egenvurdering
-            notat
-            Repetisjons {
-              items {
-                id
-                navn
-                resultat
-                notat
-                oektID
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            kursID
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        Loeper {
-          items {
-            id
-            fokus
-            egenvurdering
-            resultat
-            notat
-            dommer
-            bilde
-            hundID
-            konkurranseID
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         __typename
@@ -987,44 +750,6 @@ export const getBruker = /* GraphQL */ `
           rase
           farge
           bilde
-          Oekter {
-            items {
-              id
-              treningID
-              hundID
-              fokus
-              egenvurdering
-              notat
-              Repetisjons {
-                nextToken
-                __typename
-              }
-              kursID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
-          Loeper {
-            items {
-              id
-              fokus
-              egenvurdering
-              resultat
-              notat
-              dommer
-              bilde
-              hundID
-              konkurranseID
-              createdAt
-              updatedAt
-              __typename
-            }
-            nextToken
-            __typename
-          }
           createdAt
           updatedAt
           __typename
@@ -1058,40 +783,6 @@ export const listBrukers = /* GraphQL */ `
             rase
             farge
             bilde
-            Oekter {
-              items {
-                id
-                treningID
-                hundID
-                fokus
-                egenvurdering
-                notat
-                kursID
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
-            Loeper {
-              items {
-                id
-                fokus
-                egenvurdering
-                resultat
-                notat
-                dommer
-                bilde
-                hundID
-                konkurranseID
-                createdAt
-                updatedAt
-                __typename
-              }
-              nextToken
-              __typename
-            }
             createdAt
             updatedAt
             __typename
