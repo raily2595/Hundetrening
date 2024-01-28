@@ -746,7 +746,6 @@ export const createHund = /* GraphQL */ `
   ) {
     createHund(input: $input, condition: $condition) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -755,6 +754,7 @@ export const createHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -766,7 +766,6 @@ export const updateHund = /* GraphQL */ `
   ) {
     updateHund(input: $input, condition: $condition) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -775,6 +774,7 @@ export const updateHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -786,7 +786,6 @@ export const deleteHund = /* GraphQL */ `
   ) {
     deleteHund(input: $input, condition: $condition) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -795,99 +794,7 @@ export const deleteHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
-      __typename
-    }
-  }
-`;
-export const createBruker = /* GraphQL */ `
-  mutation CreateBruker(
-    $input: CreateBrukerInput!
-    $condition: ModelBrukerConditionInput
-  ) {
-    createBruker(input: $input, condition: $condition) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const updateBruker = /* GraphQL */ `
-  mutation UpdateBruker(
-    $input: UpdateBrukerInput!
-    $condition: ModelBrukerConditionInput
-  ) {
-    updateBruker(input: $input, condition: $condition) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const deleteBruker = /* GraphQL */ `
-  mutation DeleteBruker(
-    $input: DeleteBrukerInput!
-    $condition: ModelBrukerConditionInput
-  ) {
-    deleteBruker(input: $input, condition: $condition) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
+      owner
       __typename
     }
   }

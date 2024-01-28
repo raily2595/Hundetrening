@@ -689,10 +689,12 @@ export const onDeleteTrening = /* GraphQL */ `
   }
 `;
 export const onCreateHund = /* GraphQL */ `
-  subscription OnCreateHund($filter: ModelSubscriptionHundFilterInput) {
-    onCreateHund(filter: $filter) {
+  subscription OnCreateHund(
+    $filter: ModelSubscriptionHundFilterInput
+    $owner: String
+  ) {
+    onCreateHund(filter: $filter, owner: $owner) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -701,15 +703,18 @@ export const onCreateHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onUpdateHund = /* GraphQL */ `
-  subscription OnUpdateHund($filter: ModelSubscriptionHundFilterInput) {
-    onUpdateHund(filter: $filter) {
+  subscription OnUpdateHund(
+    $filter: ModelSubscriptionHundFilterInput
+    $owner: String
+  ) {
+    onUpdateHund(filter: $filter, owner: $owner) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -718,15 +723,18 @@ export const onUpdateHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onDeleteHund = /* GraphQL */ `
-  subscription OnDeleteHund($filter: ModelSubscriptionHundFilterInput) {
-    onDeleteHund(filter: $filter) {
+  subscription OnDeleteHund(
+    $filter: ModelSubscriptionHundFilterInput
+    $owner: String
+  ) {
+    onDeleteHund(filter: $filter, owner: $owner) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -735,90 +743,7 @@ export const onDeleteHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
-      __typename
-    }
-  }
-`;
-export const onCreateBruker = /* GraphQL */ `
-  subscription OnCreateBruker($filter: ModelSubscriptionBrukerFilterInput) {
-    onCreateBruker(filter: $filter) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onUpdateBruker = /* GraphQL */ `
-  subscription OnUpdateBruker($filter: ModelSubscriptionBrukerFilterInput) {
-    onUpdateBruker(filter: $filter) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const onDeleteBruker = /* GraphQL */ `
-  subscription OnDeleteBruker($filter: ModelSubscriptionBrukerFilterInput) {
-    onDeleteBruker(filter: $filter) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
+      owner
       __typename
     }
   }

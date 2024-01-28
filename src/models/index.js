@@ -4,7 +4,7 @@ import { schema } from './schema';
 
 
 
-const { Kurs, Loep, Konkurranse, Repetisjon, Oekt, Hendelse, Trening, Hund, Bruker } = initSchema(schema);
+const { Kurs, Loep, Konkurranse, Repetisjon, Oekt, Hendelse, Trening, Hund } = initSchema(schema);
 
 export {
   Kurs,
@@ -14,6 +14,5 @@ export {
   Oekt,
   Hendelse,
   Trening,
-  Hund,
-  Bruker
+  Hund
 };

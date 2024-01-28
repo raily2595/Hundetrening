@@ -262,7 +262,6 @@ type EagerHund = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly brukerID: string;
   readonly navn?: string | null;
   readonly bursdag?: string | null;
   readonly titler?: (string | null)[] | null;
@@ -279,7 +278,6 @@ type LazyHund = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly brukerID: string;
   readonly navn?: string | null;
   readonly bursdag?: string | null;
   readonly titler?: (string | null)[] | null;
@@ -294,34 +292,4 @@ export declare type Hund = LazyLoading extends LazyLoadingDisabled ? EagerHund :
 
 export declare const Hund: (new (init: ModelInit<Hund>) => Hund) & {
   copyOf(source: Hund, mutator: (draft: MutableModel<Hund>) => MutableModel<Hund> | void): Hund;
-}
-
-type EagerBruker = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Bruker, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly navn?: string | null;
-  readonly Hunder?: (Hund | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-type LazyBruker = {
-  readonly [__modelMeta__]: {
-    identifier: ManagedIdentifier<Bruker, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
-  };
-  readonly id: string;
-  readonly navn?: string | null;
-  readonly Hunder: AsyncCollection<Hund>;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-}
-
-export declare type Bruker = LazyLoading extends LazyLoadingDisabled ? EagerBruker : LazyBruker
-
-export declare const Bruker: (new (init: ModelInit<Bruker>) => Bruker) & {
-  copyOf(source: Bruker, mutator: (draft: MutableModel<Bruker>) => MutableModel<Bruker> | void): Bruker;
 }

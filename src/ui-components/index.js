@@ -4,10 +4,10 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-export { default as BrukerCreateForm } from "./BrukerCreateForm";
-export { default as BrukerUpdateForm } from "./BrukerUpdateForm";
 export { default as HendelseCreateForm } from "./HendelseCreateForm";
 export { default as HendelseUpdateForm } from "./HendelseUpdateForm";
+export { default as HundCreateForm } from "./HundCreateForm";
+export { default as HundUpdateForm } from "./HundUpdateForm";
 export { default as KonkurranseCreateForm } from "./KonkurranseCreateForm";
 export { default as KonkurranseUpdateForm } from "./KonkurranseUpdateForm";
 export { default as KursCreateForm } from "./KursCreateForm";

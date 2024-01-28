@@ -18,6 +18,9 @@ import Profil from './sider/Profil';
 import Meny from './sider/Meny';
 import {useEffect, useState} from "react";
 import { generateClient } from "aws-amplify/api";
+import {
+    HundUpdateForm
+} from './ui-components';
 
 const client = generateClient()
 
@@ -44,9 +47,8 @@ const App = ({ signOut }) => {
                 query: createHund,
                 variables: {
                     input: {
-                        "brukerID": "e30d50fd-e036-42b5-9a93-8abf992bbe49",
                         "navn": form.get("navn"),
-                        "bursdag": "1970-01-01Z",
+                        "bursdag": "1970-01-01",
                         "titler": [],
                         "rase": "Lorem ipsum dolor sit amet",
                         "farge": "Lorem ipsum dolor sit amet",
@@ -109,6 +111,7 @@ const App = ({ signOut }) => {
                       <Button variation="link" onClick={() => deletedHund(hund)}>
                           Delete hund
                       </Button>
+                      <HundUpdateForm hund={hund} onSuccess={() => {fetchHunder().then(r => {setHunder(r)})}}/>
                   </Flex>
               ))}
           </View>

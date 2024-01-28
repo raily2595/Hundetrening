@@ -57,20 +57,13 @@ type Trening @model @auth(rules: [{allow: public}]) {
   Oekter: [Oekt] @hasMany(indexName: "byTrening", fields: ["id"])
 }
 
-type Hund @model @auth(rules: [{allow: public}]) {
+type Hund @model @auth(rules: [{allow: owner}]) {
   id: ID!
-  brukerID: ID! @index(name: "byBruker")
   navn: String
   bursdag: AWSDate
   titler: [String]
   rase: String
   farge: String
   bilde: String
-}
-
-type Bruker @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  navn: String
-  Hunder: [Hund] @hasMany(indexName: "byBruker", fields: ["id"])
 }
  

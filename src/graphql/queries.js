@@ -664,7 +664,6 @@ export const getHund = /* GraphQL */ `
   query GetHund($id: ID!) {
     getHund(id: $id) {
       id
-      brukerID
       navn
       bursdag
       titler
@@ -673,6 +672,7 @@ export const getHund = /* GraphQL */ `
       bilde
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -686,7 +686,6 @@ export const listHunds = /* GraphQL */ `
     listHunds(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        brukerID
         navn
         bursdag
         titler
@@ -695,103 +694,7 @@ export const listHunds = /* GraphQL */ `
         bilde
         createdAt
         updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const hundsByBrukerID = /* GraphQL */ `
-  query HundsByBrukerID(
-    $brukerID: ID!
-    $sortDirection: ModelSortDirection
-    $filter: ModelHundFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    hundsByBrukerID(
-      brukerID: $brukerID
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
-        brukerID
-        navn
-        bursdag
-        titler
-        rase
-        farge
-        bilde
-        createdAt
-        updatedAt
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const getBruker = /* GraphQL */ `
-  query GetBruker($id: ID!) {
-    getBruker(id: $id) {
-      id
-      navn
-      Hunder {
-        items {
-          id
-          brukerID
-          navn
-          bursdag
-          titler
-          rase
-          farge
-          bilde
-          createdAt
-          updatedAt
-          __typename
-        }
-        nextToken
-        __typename
-      }
-      createdAt
-      updatedAt
-      __typename
-    }
-  }
-`;
-export const listBrukers = /* GraphQL */ `
-  query ListBrukers(
-    $filter: ModelBrukerFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listBrukers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        navn
-        Hunder {
-          items {
-            id
-            brukerID
-            navn
-            bursdag
-            titler
-            rase
-            farge
-            bilde
-            createdAt
-            updatedAt
-            __typename
-          }
-          nextToken
-          __typename
-        }
-        createdAt
-        updatedAt
+        owner
         __typename
       }
       nextToken
