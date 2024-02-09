@@ -10,25 +10,23 @@ import ColoredBox from "./ColeredBox";
 const client = generateClient()
 
 
-const Hund = () => {
+const Hundprofil = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const hundid = searchParams.get('id');
     const [hund, setHund] = useState({
         navn: '',
         dato: '',
-        titler: '',
         rase: '',
         farge: '',
     });
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetchHund().then(r => {setHund({
+        fetchHund().then(r => {console.log(r);setHund({
             ...hund,
             navn: r.navn,
-            dato: r.dato,
-            titler: r.titler,
+            dato: r.bursdag,
             rase: r.rase,
             farge: r.farge
         })})
@@ -63,19 +61,15 @@ const Hund = () => {
                 <Text>{hund.dato}</Text>
             </div>
             <div>
-                <label>Titler</label>
-                <Text>{hund.titler}</Text>
-            </div>
-            <div>
                 <label>Rase</label>
                 <Text>{hund.rase}</Text>
             </div>
             <ColoredBox color={hund.farge} />
             <Button variation="link" onClick={() => deletedHund(hund)}>Delete hund</Button>
-            <button onClick={() => navigate('/endreHund?id=' + hund.id)}>{strings.oppHund}</button>
+            <button onClick={() => navigate('/endreHund?id=' + hundid)}>{strings.oppHund}</button>
             <button onClick={() => navigate("/profil")}>Tilbake</button>
         </div>
     );
 };
 
-export default Hund;
+export default Hundprofil;

@@ -11,7 +11,6 @@ const NyHund = () => {
     const [hund, setHund] = useState({
         navn: '',
         dato: moment().format('YYYY-MM-DD'),
-        titler: '',
         rase: '',
         farge: '#5e72e4',
     });
@@ -49,7 +48,6 @@ const NyHund = () => {
                     input: {
                         "navn": hund.navn,
                         "bursdag": hund.dato,
-                        "titler": hund.titler,
                         "rase": hund.rase,
                         "farge": hund.farge,
                     }
@@ -103,15 +101,6 @@ const NyHund = () => {
                         value= {hund.rase}
                         onChange={handleInputChange}
                         required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="titler">Titler: </label>
-                    <textarea
-                        id="titler"
-                        name="titler"
-                        value={hund.titler}
-                        onChange={handleInputChange}
                     />
                 </div>
                 <div>

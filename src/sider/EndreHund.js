@@ -16,7 +16,6 @@ const EndreHUnd = () => {
     const [hund, setHund] = useState({
         navn: '',
         dato: '',
-        titler: '',
         rase: '',
         farge: '',
     });
@@ -26,8 +25,7 @@ const EndreHUnd = () => {
         fetchHund().then(r => {setHund({
             ...hund,
             navn: r.navn,
-            dato: r.dato,
-            titler: r.titler,
+            dato: r.bursdag,
             rase: r.rase,
             farge: r.farge
         })})
@@ -72,9 +70,9 @@ const EndreHUnd = () => {
                 query: updateHund,
                 variables: {
                     input: {
+                        "id": hundid,
                         "navn": hund.navn,
                         "bursdag": hund.dato,
-                        "titler": hund.titler,
                         "rase": hund.rase,
                         "farge": hund.farge,
                     }
@@ -127,15 +125,6 @@ const EndreHUnd = () => {
                         value= {hund.rase}
                         onChange={handleInputChange}
                         required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="titler">Titler: </label>
-                    <textarea
-                        id="titler"
-                        name="titler"
-                        value={hund.titler}
-                        onChange={handleInputChange}
                     />
                 </div>
                 <div>

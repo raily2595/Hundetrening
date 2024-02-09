@@ -15,6 +15,7 @@ const EndreTrening = () => {
     const treningid = searchParams.get('id');
     const [treningHendelseId, setTreningHenID] = useState('');
     const [hendelse, setHendelse] = useState({
+        id: '',
         navn: '',
         sted: '',
         miljo: '',
@@ -28,6 +29,7 @@ const EndreTrening = () => {
     useEffect(() => {
         fetchHendelese().then(r => {setHendelse({
             ...hendelse,
+            id: r.id,
             navn: r.navn,
             sted: r.sted,
             miljo: r.miljo,
@@ -93,6 +95,7 @@ const EndreTrening = () => {
                 query: updateHendelse,
                 variables: {
                     input: {
+                        "id": hendelse.id,
                         "navn": hendelse.navn,
                         "sted": hendelse.sted,
                         "miljoe": hendelse.miljo,

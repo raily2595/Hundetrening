@@ -14,6 +14,7 @@ const EndreKonkurranse = () => {
     const konkurranseid = searchParams.get('id');
     const [konkurranseHendelseId, setKonkHenID] = useState('');
     const [hendelse, setHendelse] = useState({
+        id: '',
         navn: '',
         sted: '',
         miljo: '',
@@ -27,6 +28,7 @@ const EndreKonkurranse = () => {
     useEffect(() => {
         fetchHendelese().then(r => {setHendelse({
             ...hendelse,
+            id: r.id,
             navn: r.navn,
             sted: r.sted,
             miljo: r.miljo,
@@ -92,6 +94,7 @@ const EndreKonkurranse = () => {
                 query: updateHendelse,
                 variables: {
                     input: {
+                        "id": hendelse.id,
                         "navn": hendelse.navn,
                         "sted": hendelse.sted,
                         "miljoe": hendelse.miljo,

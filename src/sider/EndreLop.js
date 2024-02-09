@@ -71,6 +71,7 @@ const EndreLop = () => {
                 query: updateLoep,
                 variables: {
                     input: {
+                        "id": lopid,
                         "fokus": lop.fokus,
                         "egenvurdering": lop.egenvurdering,
                         "resultat": lop.resultat,

@@ -31,7 +31,7 @@ import Treninger from "./sider/Treninger";
 import Kurser from "./sider/Kurser";
 import Konker from "./sider/Konker";
 import EndreKurs from "./sider/EndreKurs";
-import {Hund} from "./models";
+import Hundprofil from "./sider/Hundprofil";
 
 
 const App = ({ signOut }) => {
@@ -62,7 +62,7 @@ const App = ({ signOut }) => {
 
               <Route path="/nyhund" element={<NyHund />} />
               <Route path="/endreHund" element={<EndreHund />} />
-              <Route path="/hund" element={<Hund />} />
+              <Route path="/hundprofil" element={<Hundprofil />} />
 
               <Route path="/nyokt" element={<NyOkt />} />
               <Route path="/endreOkt" element={<EndreOkt />} />

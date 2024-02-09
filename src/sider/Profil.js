@@ -72,7 +72,7 @@ const Profil = () => {
                     >
                         <ColoredBox color={hund.farge} />
                         <Text as="strong" fontWeight={700}>{hund.navn}</Text>
-                        <button onClick={() => navigate('/hund?id=' + hund.id)}>Vis hund</button>
+                        <button onClick={() => navigate('/hundprofil?id=' + hund.id)}>Vis hund</button>
                     </Flex>
                 ))}
             </View>

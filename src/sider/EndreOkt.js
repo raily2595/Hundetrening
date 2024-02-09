@@ -65,6 +65,7 @@ const EndreOkt = () => {
                 query: updateOekt,
                 variables: {
                     input: {
+                        "id": oktid,
                         "fokus": okt.fokus,
                         "egenvurdering": okt.egenvurdering,
                         "notat": okt.notat,

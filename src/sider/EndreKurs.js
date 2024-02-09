@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {generateClient} from "aws-amplify/api";
 import moment from "moment/moment";
 import {useLocation, useNavigate} from "react-router-dom";
-import {updateHendelse} from "../graphql/mutations";
+import {updateHendelse, updateKurs} from "../graphql/mutations";
 import Select from "react-select";
 import {getHendelse, getKurs} from "../graphql/queries";
 
@@ -15,6 +15,7 @@ const EndreKurs = () => {
     const kursid = searchParams.get('id');
     const [kursHendelsId, setKursHenID] = useState('');
     const [hendelse, setHendelse] = useState({
+        id: '',
         navn: '',
         sted: '',
         miljo: '',
@@ -29,6 +30,7 @@ const EndreKurs = () => {
     useEffect(() => {
         fetchHendelese().then(r => {setHendelse({
             ...hendelse,
+            id: r.id,
             navn: r.navn,
             sted: r.sted,
             miljo: r.miljo,
@@ -101,6 +103,7 @@ const EndreKurs = () => {
                 query: updateHendelse,
                 variables: {
                     input: {
+                        "id": hendelse.id,
                         "navn": hendelse.navn,
                         "sted": hendelse.sted,
                         "miljoe": hendelse.miljo,
@@ -108,6 +111,17 @@ const EndreKurs = () => {
                         "type": hendelse.gren,
                         "handleliste": hendelse.handleliste,
                         "pakkeliste": hendelse.pakkeliste
+                    }
+                }
+            });
+
+            const updatedKurs = await client.graphql({
+                query: updateKurs,
+                variables: {
+                    input: {
+                        "kursholder": kursholder,
+                        "kursHendelseId": kursHendelsId,
+                        "Oekter": []
                     }
                 }
             });
