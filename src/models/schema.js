@@ -777,14 +777,6 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "titler": {
-                    "name": "titler",
-                    "isArray": true,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
-                },
                 "rase": {
                     "name": "rase",
                     "isArray": false,
@@ -880,5 +872,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "9e5677ad21eaa6c2bfe55082be151a85"
+    "version": "756c88c4c714ab2ea42aee8f76167302"
 };

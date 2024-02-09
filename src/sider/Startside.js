@@ -38,7 +38,7 @@ const Startside = () => {
                             {strings.nyhund}
                         </Link>
                 ) : (
-                    <h2>hei</h2>
+                    <div></div>
                 )}
             </div>
         </main>

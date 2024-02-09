@@ -266,7 +266,6 @@ type EagerHund = {
   readonly id: string;
   readonly navn?: string | null;
   readonly bursdag?: string | null;
-  readonly titler?: (string | null)[] | null;
   readonly rase?: string | null;
   readonly farge?: string | null;
   readonly Loeps?: (Loep | null)[] | null;
@@ -283,7 +282,6 @@ type LazyHund = {
   readonly id: string;
   readonly navn?: string | null;
   readonly bursdag?: string | null;
-  readonly titler?: (string | null)[] | null;
   readonly rase?: string | null;
   readonly farge?: string | null;
   readonly Loeps: AsyncCollection<Loep>;

@@ -4,7 +4,6 @@ import {generateClient} from "aws-amplify/api";
 import moment from "moment";
 import { createHund } from "../graphql/mutations";
 import InputColor from 'react-input-color';
-
 const client = generateClient()
 
 
@@ -12,7 +11,7 @@ const NyHund = () => {
     const [hund, setHund] = useState({
         navn: '',
         dato: moment().format('YYYY-MM-DD'),
-        titler: [],
+        titler: '',
         rase: '',
         farge: '#5e72e4',
     });
@@ -104,6 +103,15 @@ const NyHund = () => {
                         value= {hund.rase}
                         onChange={handleInputChange}
                         required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="titler">Titler: </label>
+                    <textarea
+                        id="titler"
+                        name="titler"
+                        value={hund.titler}
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div>

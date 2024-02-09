@@ -805,7 +805,6 @@ export const onCreateHund = /* GraphQL */ `
       id
       navn
       bursdag
-      titler
       rase
       farge
       Loeps {
@@ -860,7 +859,6 @@ export const onUpdateHund = /* GraphQL */ `
       id
       navn
       bursdag
-      titler
       rase
       farge
       Loeps {
@@ -915,7 +913,6 @@ export const onDeleteHund = /* GraphQL */ `
       id
       navn
       bursdag
-      titler
       rase
       farge
       Loeps {

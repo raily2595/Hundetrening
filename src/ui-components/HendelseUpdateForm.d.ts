@@ -27,8 +27,8 @@ export declare type HendelseUpdateFormInputValues = {
     miljoe?: string;
     dato?: string;
     type?: string;
-    handleliste?: string[];
-    pakkeliste?: string[];
+    handleliste?: string;
+    pakkeliste?: string;
 };
 export declare type HendelseUpdateFormValidationValues = {
     navn?: ValidationFunction<string>;

@@ -16,7 +16,7 @@ const EndreHUnd = () => {
     const [hund, setHund] = useState({
         navn: '',
         dato: '',
-        titler: [],
+        titler: '',
         rase: '',
         farge: '',
     });
@@ -127,6 +127,15 @@ const EndreHUnd = () => {
                         value= {hund.rase}
                         onChange={handleInputChange}
                         required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="titler">Titler: </label>
+                    <textarea
+                        id="titler"
+                        name="titler"
+                        value={hund.titler}
+                        onChange={handleInputChange}
                     />
                 </div>
                 <div>

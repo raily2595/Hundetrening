@@ -794,7 +794,6 @@ export const getHund = /* GraphQL */ `
       id
       navn
       bursdag
-      titler
       rase
       farge
       Loeps {
@@ -851,7 +850,6 @@ export const listHunds = /* GraphQL */ `
         id
         navn
         bursdag
-        titler
         rase
         farge
         Loeps {

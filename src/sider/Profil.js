@@ -12,7 +12,8 @@ import React, {useEffect, useState} from "react";
 import { generateClient } from "aws-amplify/api";
 import { deleteUser } from 'aws-amplify/auth';
 import strings from "../strings.json";
-import { useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import ColoredBox from "./ColeredBox";
 
 const client = generateClient()
 
@@ -55,8 +56,12 @@ const Profil = () => {
 
     return (
         <View classnavn="Profil">
-            <Heading level={1}>Min profil</Heading>
-            <Heading level={2}>Dine hunder</Heading>
+            <h1>Min Profil</h1>
+            {hunder.length === 1 ?(
+                <h2>Min Hund</h2>
+            ) : (
+                <h2>Mine Hunder</h2>
+            )}
             <View margin="3rem 0">
                 {hunder.map((hund) => (
                     <Flex
@@ -65,9 +70,9 @@ const Profil = () => {
                         justifyContent="center"
                         alignItems="center"
                     >
+                        <ColoredBox color={hund.farge} />
                         <Text as="strong" fontWeight={700}>{hund.navn}</Text>
-                        <Button variation="link" onClick={() => deletedHund(hund)}>Delete hund</Button>
-                        <button onClick={() => navigate('/endreHund?id=' + hund.id)}>{strings.oppHund}</button>
+                        <button onClick={() => navigate('/hund?id=' + hund.id)}>Vis hund</button>
                     </Flex>
                 ))}
             </View>

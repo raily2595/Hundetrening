@@ -6,178 +6,12 @@
 
 /* eslint-disable */
 import * as React from "react";
-import {
-  Badge,
-  Button,
-  Divider,
-  Flex,
-  Grid,
-  Icon,
-  ScrollView,
-  Text,
-  TextField,
-  useTheme,
-} from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { generateClient } from "aws-amplify/api";
 import { getHendelse } from "../graphql/queries";
 import { updateHendelse } from "../graphql/mutations";
 const client = generateClient();
-function ArrayField({
-  items = [],
-  onChange,
-  label,
-  inputFieldRef,
-  children,
-  hasError,
-  setFieldValue,
-  currentFieldValue,
-  defaultFieldValue,
-  lengthLimit,
-  getBadgeText,
-  runValidationTasks,
-  errorMessage,
-}) {
-  const labelElement = <Text>{label}</Text>;
-  const {
-    tokens: {
-      components: {
-        fieldmessages: { error: errorStyles },
-      },
-    },
-  } = useTheme();
-  const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
-  const [isEditing, setIsEditing] = React.useState();
-  React.useEffect(() => {
-    if (isEditing) {
-      inputFieldRef?.current?.focus();
-    }
-  }, [isEditing]);
-  const removeItem = async (removeIndex) => {
-    const newItems = items.filter((value, index) => index !== removeIndex);
-    await onChange(newItems);
-    setSelectedBadgeIndex(undefined);
-  };
-  const addItem = async () => {
-    const { hasError } = runValidationTasks();
-    if (
-      currentFieldValue !== undefined &&
-      currentFieldValue !== null &&
-      currentFieldValue !== "" &&
-      !hasError
-    ) {
-      const newItems = [...items];
-      if (selectedBadgeIndex !== undefined) {
-        newItems[selectedBadgeIndex] = currentFieldValue;
-        setSelectedBadgeIndex(undefined);
-      } else {
-        newItems.push(currentFieldValue);
-      }
-      await onChange(newItems);
-      setIsEditing(false);
-    }
-  };
-  const arraySection = (
-    <React.Fragment>
-      {!!items?.length && (
-        <ScrollView height="inherit" width="inherit" maxHeight={"7rem"}>
-          {items.map((value, index) => {
-            return (
-              <Badge
-                key={index}
-                style={{
-                  cursor: "pointer",
-                  alignItems: "center",
-                  marginRight: 3,
-                  marginTop: 3,
-                  backgroundColor:
-                    index === selectedBadgeIndex ? "#B8CEF9" : "",
-                }}
-                onClick={() => {
-                  setSelectedBadgeIndex(index);
-                  setFieldValue(items[index]);
-                  setIsEditing(true);
-                }}
-              >
-                {getBadgeText ? getBadgeText(value) : value.toString()}
-                <Icon
-                  style={{
-                    cursor: "pointer",
-                    paddingLeft: 3,
-                    width: 20,
-                    height: 20,
-                  }}
-                  viewBox={{ width: 20, height: 20 }}
-                  paths={[
-                    {
-                      d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
-                      stroke: "black",
-                    },
-                  ]}
-                  ariaLabel="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    removeItem(index);
-                  }}
-                />
-              </Badge>
-            );
-          })}
-        </ScrollView>
-      )}
-      <Divider orientation="horizontal" marginTop={5} />
-    </React.Fragment>
-  );
-  if (lengthLimit !== undefined && items.length >= lengthLimit && !isEditing) {
-    return (
-      <React.Fragment>
-        {labelElement}
-        {arraySection}
-      </React.Fragment>
-    );
-  }
-  return (
-    <React.Fragment>
-      {labelElement}
-      {isEditing && children}
-      {!isEditing ? (
-        <>
-          <Button
-            onClick={() => {
-              setIsEditing(true);
-            }}
-          >
-            Add item
-          </Button>
-          {errorMessage && hasError && (
-            <Text color={errorStyles.color} fontSize={errorStyles.fontSize}>
-              {errorMessage}
-            </Text>
-          )}
-        </>
-      ) : (
-        <Flex justifyContent="flex-end">
-          {(currentFieldValue || isEditing) && (
-            <Button
-              children="Cancel"
-              type="button"
-              size="small"
-              onClick={() => {
-                setFieldValue(defaultFieldValue);
-                setIsEditing(false);
-                setSelectedBadgeIndex(undefined);
-              }}
-            ></Button>
-          )}
-          <Button size="small" variation="link" onClick={addItem}>
-            {selectedBadgeIndex !== undefined ? "Save" : "Add"}
-          </Button>
-        </Flex>
-      )}
-      {arraySection}
-    </React.Fragment>
-  );
-}
 export default function HendelseUpdateForm(props) {
   const {
     id: idProp,
@@ -196,8 +30,8 @@ export default function HendelseUpdateForm(props) {
     miljoe: "",
     dato: "",
     type: "",
-    handleliste: [],
-    pakkeliste: [],
+    handleliste: "",
+    pakkeliste: "",
   };
   const [navn, setNavn] = React.useState(initialValues.navn);
   const [sted, setSted] = React.useState(initialValues.sted);
@@ -218,10 +52,8 @@ export default function HendelseUpdateForm(props) {
     setMiljoe(cleanValues.miljoe);
     setDato(cleanValues.dato);
     setType(cleanValues.type);
-    setHandleliste(cleanValues.handleliste ?? []);
-    setCurrentHandlelisteValue("");
-    setPakkeliste(cleanValues.pakkeliste ?? []);
-    setCurrentPakkelisteValue("");
+    setHandleliste(cleanValues.handleliste);
+    setPakkeliste(cleanValues.pakkeliste);
     setErrors({});
   };
   const [hendelseRecord, setHendelseRecord] = React.useState(hendelseModelProp);
@@ -240,12 +72,6 @@ export default function HendelseUpdateForm(props) {
     queryData();
   }, [idProp, hendelseModelProp]);
   React.useEffect(resetStateValues, [hendelseRecord]);
-  const [currentHandlelisteValue, setCurrentHandlelisteValue] =
-    React.useState("");
-  const handlelisteRef = React.createRef();
-  const [currentPakkelisteValue, setCurrentPakkelisteValue] =
-    React.useState("");
-  const pakkelisteRef = React.createRef();
   const validations = {
     navn: [],
     sted: [],
@@ -490,9 +316,13 @@ export default function HendelseUpdateForm(props) {
         hasError={errors.type?.hasError}
         {...getOverrideProps(overrides, "type")}
       ></TextField>
-      <ArrayField
-        onChange={async (items) => {
-          let values = items;
+      <TextField
+        label="Handleliste"
+        isRequired={false}
+        isReadOnly={false}
+        value={handleliste}
+        onChange={(e) => {
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               navn,
@@ -500,52 +330,29 @@ export default function HendelseUpdateForm(props) {
               miljoe,
               dato,
               type,
-              handleliste: values,
+              handleliste: value,
               pakkeliste,
             };
             const result = onChange(modelFields);
-            values = result?.handleliste ?? values;
+            value = result?.handleliste ?? value;
           }
-          setHandleliste(values);
-          setCurrentHandlelisteValue("");
+          if (errors.handleliste?.hasError) {
+            runValidationTasks("handleliste", value);
+          }
+          setHandleliste(value);
         }}
-        currentFieldValue={currentHandlelisteValue}
-        label={"Handleliste"}
-        items={handleliste}
-        hasError={errors?.handleliste?.hasError}
-        runValidationTasks={async () =>
-          await runValidationTasks("handleliste", currentHandlelisteValue)
-        }
-        errorMessage={errors?.handleliste?.errorMessage}
-        setFieldValue={setCurrentHandlelisteValue}
-        inputFieldRef={handlelisteRef}
-        defaultFieldValue={""}
-      >
-        <TextField
-          label="Handleliste"
-          isRequired={false}
-          isReadOnly={false}
-          value={currentHandlelisteValue}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (errors.handleliste?.hasError) {
-              runValidationTasks("handleliste", value);
-            }
-            setCurrentHandlelisteValue(value);
-          }}
-          onBlur={() =>
-            runValidationTasks("handleliste", currentHandlelisteValue)
-          }
-          errorMessage={errors.handleliste?.errorMessage}
-          hasError={errors.handleliste?.hasError}
-          ref={handlelisteRef}
-          labelHidden={true}
-          {...getOverrideProps(overrides, "handleliste")}
-        ></TextField>
-      </ArrayField>
-      <ArrayField
-        onChange={async (items) => {
-          let values = items;
+        onBlur={() => runValidationTasks("handleliste", handleliste)}
+        errorMessage={errors.handleliste?.errorMessage}
+        hasError={errors.handleliste?.hasError}
+        {...getOverrideProps(overrides, "handleliste")}
+      ></TextField>
+      <TextField
+        label="Pakkeliste"
+        isRequired={false}
+        isReadOnly={false}
+        value={pakkeliste}
+        onChange={(e) => {
+          let { value } = e.target;
           if (onChange) {
             const modelFields = {
               navn,
@@ -554,48 +361,21 @@ export default function HendelseUpdateForm(props) {
               dato,
               type,
               handleliste,
-              pakkeliste: values,
+              pakkeliste: value,
             };
             const result = onChange(modelFields);
-            values = result?.pakkeliste ?? values;
+            value = result?.pakkeliste ?? value;
           }
-          setPakkeliste(values);
-          setCurrentPakkelisteValue("");
+          if (errors.pakkeliste?.hasError) {
+            runValidationTasks("pakkeliste", value);
+          }
+          setPakkeliste(value);
         }}
-        currentFieldValue={currentPakkelisteValue}
-        label={"Pakkeliste"}
-        items={pakkeliste}
-        hasError={errors?.pakkeliste?.hasError}
-        runValidationTasks={async () =>
-          await runValidationTasks("pakkeliste", currentPakkelisteValue)
-        }
-        errorMessage={errors?.pakkeliste?.errorMessage}
-        setFieldValue={setCurrentPakkelisteValue}
-        inputFieldRef={pakkelisteRef}
-        defaultFieldValue={""}
-      >
-        <TextField
-          label="Pakkeliste"
-          isRequired={false}
-          isReadOnly={false}
-          value={currentPakkelisteValue}
-          onChange={(e) => {
-            let { value } = e.target;
-            if (errors.pakkeliste?.hasError) {
-              runValidationTasks("pakkeliste", value);
-            }
-            setCurrentPakkelisteValue(value);
-          }}
-          onBlur={() =>
-            runValidationTasks("pakkeliste", currentPakkelisteValue)
-          }
-          errorMessage={errors.pakkeliste?.errorMessage}
-          hasError={errors.pakkeliste?.hasError}
-          ref={pakkelisteRef}
-          labelHidden={true}
-          {...getOverrideProps(overrides, "pakkeliste")}
-        ></TextField>
-      </ArrayField>
+        onBlur={() => runValidationTasks("pakkeliste", pakkeliste)}
+        errorMessage={errors.pakkeliste?.errorMessage}
+        hasError={errors.pakkeliste?.hasError}
+        {...getOverrideProps(overrides, "pakkeliste")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
