@@ -25,11 +25,13 @@ export declare type OektUpdateFormInputValues = {
     fokus?: string;
     egenvurdering?: string;
     notat?: string;
+    hundID?: string;
 };
 export declare type OektUpdateFormValidationValues = {
     fokus?: ValidationFunction<string>;
     egenvurdering?: ValidationFunction<string>;
     notat?: ValidationFunction<string>;
+    hundID?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type OektUpdateFormOverridesProps = {
@@ -37,6 +39,7 @@ export declare type OektUpdateFormOverridesProps = {
     fokus?: PrimitiveOverrideProps<TextFieldProps>;
     egenvurdering?: PrimitiveOverrideProps<TextFieldProps>;
     notat?: PrimitiveOverrideProps<TextFieldProps>;
+    hundID?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type OektUpdateFormProps = React.PropsWithChildren<{
     overrides?: OektUpdateFormOverridesProps | undefined | null;

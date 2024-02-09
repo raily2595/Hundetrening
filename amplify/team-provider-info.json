@@ -17,6 +17,9 @@
       },
       "api": {
         "hundetrening": {}
+      },
+      "storage": {
+        "s3hundetreningstorage75e1138e": {}
       }
     }
   }

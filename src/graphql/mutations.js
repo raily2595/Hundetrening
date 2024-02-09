@@ -20,6 +20,7 @@ export const createKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -38,14 +39,17 @@ export const createKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -54,6 +58,7 @@ export const createKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
@@ -77,6 +82,7 @@ export const updateKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -95,14 +101,17 @@ export const updateKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -111,6 +120,7 @@ export const updateKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
@@ -134,6 +144,7 @@ export const deleteKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -152,14 +163,17 @@ export const deleteKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -168,6 +182,7 @@ export const deleteKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
@@ -184,10 +199,11 @@ export const createLoep = /* GraphQL */ `
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -204,10 +220,11 @@ export const updateLoep = /* GraphQL */ `
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -224,10 +241,11 @@ export const deleteLoep = /* GraphQL */ `
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -250,6 +268,7 @@ export const createKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -260,10 +279,11 @@ export const createKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -272,6 +292,7 @@ export const createKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -294,6 +315,7 @@ export const updateKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -304,10 +326,11 @@ export const updateKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -316,6 +339,7 @@ export const updateKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -338,6 +362,7 @@ export const deleteKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -348,10 +373,11 @@ export const deleteKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -360,6 +386,7 @@ export const deleteKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -377,6 +404,7 @@ export const createRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -394,6 +422,7 @@ export const updateRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -411,6 +440,7 @@ export const deleteRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -435,14 +465,17 @@ export const createOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -467,14 +500,17 @@ export const updateOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -499,14 +535,17 @@ export const deleteOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -527,6 +566,7 @@ export const createHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -547,6 +587,7 @@ export const updateHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -567,6 +608,7 @@ export const deleteHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -589,6 +631,7 @@ export const createTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -607,14 +650,17 @@ export const createTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -623,6 +669,7 @@ export const createTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
@@ -645,6 +692,7 @@ export const updateTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -663,14 +711,17 @@ export const updateTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -679,6 +730,7 @@ export const updateTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
@@ -701,6 +753,7 @@ export const deleteTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -719,14 +772,17 @@ export const deleteTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -735,6 +791,7 @@ export const deleteTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
@@ -751,7 +808,42 @@ export const createHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner
@@ -771,7 +863,42 @@ export const updateHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner
@@ -791,7 +918,42 @@ export const deleteHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner

@@ -1,28 +1,28 @@
-type Kurs @model @auth(rules: [{allow: public}]) {
+type Kurs @model @auth(rules: [{allow: owner}]) {
   id: ID!
   kursholder: String
   Hendelse: Hendelse @hasOne
   Oekter: [Oekt] @hasMany(indexName: "byKurs", fields: ["id"])
 }
 
-type Loep @model @auth(rules: [{allow: public}]) {
+type Loep @model @auth(rules: [{allow: owner}]) {
   id: ID!
   fokus: String
   egenvurdering: String
   resultat: String
   notat: String
   dommer: String
-  bilde: String
   konkurranseID: ID! @index(name: "byKonkurranse")
+  hundID: ID! @index(name: "byHund")
 }
 
-type Konkurranse @model @auth(rules: [{allow: public}]) {
+type Konkurranse @model @auth(rules: [{allow: owner}]) {
   id: ID!
   Hendelse: Hendelse @hasOne
   Loeper: [Loep] @hasMany(indexName: "byKonkurranse", fields: ["id"])
 }
 
-type Repetisjon @model @auth(rules: [{allow: public}]) {
+type Repetisjon @model @auth(rules: [{allow: owner}]) {
   id: ID!
   navn: String
   resultat: String
@@ -30,7 +30,7 @@ type Repetisjon @model @auth(rules: [{allow: public}]) {
   oektID: ID! @index(name: "byOekt")
 }
 
-type Oekt @model @auth(rules: [{allow: public}]) {
+type Oekt @model @auth(rules: [{allow: owner}]) {
   id: ID!
   treningID: ID @index(name: "byTrening")
   fokus: String
@@ -38,20 +38,21 @@ type Oekt @model @auth(rules: [{allow: public}]) {
   notat: String
   Repetisjons: [Repetisjon] @hasMany(indexName: "byOekt", fields: ["id"])
   kursID: ID @index(name: "byKurs")
+  hundID: ID! @index(name: "byHund")
 }
 
-type Hendelse @model @auth(rules: [{allow: public}]) {
+type Hendelse @model @auth(rules: [{allow: owner}]) {
   id: ID!
   navn: String
   sted: String
   miljoe: String
   dato: AWSDate
   type: String
-  handleliste: [String]
-  pakkeliste: [String]
+  handleliste: String
+  pakkeliste: String
 }
 
-type Trening @model @auth(rules: [{allow: public}]) {
+type Trening @model @auth(rules: [{allow: owner}]) {
   id: ID!
   Hendelse: Hendelse @hasOne
   Oekter: [Oekt] @hasMany(indexName: "byTrening", fields: ["id"])
@@ -64,6 +65,7 @@ type Hund @model @auth(rules: [{allow: owner}]) {
   titler: [String]
   rase: String
   farge: String
-  bilde: String
+  Loeps: [Loep] @hasMany(indexName: "byHund", fields: ["id"])
+  Oekts: [Loep] @hasMany(indexName: "byHund", fields: ["id"])
 }
  

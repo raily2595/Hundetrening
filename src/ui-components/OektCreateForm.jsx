@@ -26,23 +26,27 @@ export default function OektCreateForm(props) {
     fokus: "",
     egenvurdering: "",
     notat: "",
+    hundID: "",
   };
   const [fokus, setFokus] = React.useState(initialValues.fokus);
   const [egenvurdering, setEgenvurdering] = React.useState(
     initialValues.egenvurdering
   );
   const [notat, setNotat] = React.useState(initialValues.notat);
+  const [hundID, setHundID] = React.useState(initialValues.hundID);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setFokus(initialValues.fokus);
     setEgenvurdering(initialValues.egenvurdering);
     setNotat(initialValues.notat);
+    setHundID(initialValues.hundID);
     setErrors({});
   };
   const validations = {
     fokus: [],
     egenvurdering: [],
     notat: [],
+    hundID: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -73,6 +77,7 @@ export default function OektCreateForm(props) {
           fokus,
           egenvurdering,
           notat,
+          hundID,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -138,6 +143,7 @@ export default function OektCreateForm(props) {
               fokus: value,
               egenvurdering,
               notat,
+              hundID,
             };
             const result = onChange(modelFields);
             value = result?.fokus ?? value;
@@ -164,6 +170,7 @@ export default function OektCreateForm(props) {
               fokus,
               egenvurdering: value,
               notat,
+              hundID,
             };
             const result = onChange(modelFields);
             value = result?.egenvurdering ?? value;
@@ -190,6 +197,7 @@ export default function OektCreateForm(props) {
               fokus,
               egenvurdering,
               notat: value,
+              hundID,
             };
             const result = onChange(modelFields);
             value = result?.notat ?? value;
@@ -203,6 +211,33 @@ export default function OektCreateForm(props) {
         errorMessage={errors.notat?.errorMessage}
         hasError={errors.notat?.hasError}
         {...getOverrideProps(overrides, "notat")}
+      ></TextField>
+      <TextField
+        label="Hund id"
+        isRequired={true}
+        isReadOnly={false}
+        value={hundID}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              fokus,
+              egenvurdering,
+              notat,
+              hundID: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.hundID ?? value;
+          }
+          if (errors.hundID?.hasError) {
+            runValidationTasks("hundID", value);
+          }
+          setHundID(value);
+        }}
+        onBlur={() => runValidationTasks("hundID", hundID)}
+        errorMessage={errors.hundID?.errorMessage}
+        hasError={errors.hundID?.hasError}
+        {...getOverrideProps(overrides, "hundID")}
       ></TextField>
       <Flex
         justifyContent="space-between"

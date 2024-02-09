@@ -2,7 +2,7 @@
   "AppSyncApiName": "hundetrening",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2024-01-28T13:24:29.544Z",
+  "AuthModeLastUpdated": "2024-01-28T17:27:07.871Z",
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
       "authhundetreningccef434a",

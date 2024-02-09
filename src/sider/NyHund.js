@@ -1,46 +1,22 @@
-import React, {useEffect, useState} from "react";
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import {generateClient} from "aws-amplify/api";
 import moment from "moment";
-import {updateHund} from "../graphql/mutations";
+import { createHund } from "../graphql/mutations";
 import InputColor from 'react-input-color';
-import {getHund} from "../graphql/queries";
 
 const client = generateClient()
 
 
-const EndreHUnd = () => {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const hundid = searchParams.get('id');
+const NyHund = () => {
     const [hund, setHund] = useState({
         navn: '',
-        dato: '',
+        dato: moment().format('YYYY-MM-DD'),
         titler: [],
         rase: '',
-        farge: '',
+        farge: '#5e72e4',
     });
     const navigate = useNavigate()
-
-    useEffect(() => {
-        fetchHund().then(r => {setHund({
-            ...hund,
-            navn: r.navn,
-            dato: r.dato,
-            titler: r.titler,
-            rase: r.rase,
-            farge: r.farge
-        })})
-    }, []);
-
-    async function fetchHund() {
-
-        const oneHund = await client.graphql({
-            query: getHund,
-            variables: { id: hundid }
-        });
-        return oneHund?.data?.getHund
-    }
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -68,8 +44,8 @@ const EndreHUnd = () => {
 
     async function lastopp() {
         try {
-            const updatedHund = await client.graphql({
-                query: updateHund,
+            const newHund = await client.graphql({
+                query: createHund,
                 variables: {
                     input: {
                         "navn": hund.navn,
@@ -80,6 +56,7 @@ const EndreHUnd = () => {
                     }
                 }
             });
+            console.log(newHund);
             navigate('/profil');
 
         } catch (err) {
@@ -94,7 +71,7 @@ const EndreHUnd = () => {
 
     return (
         <div>
-            <h1>Endre Hund</h1>
+            <h1>Ny Hund</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="navn">Navn: </label>
@@ -147,11 +124,11 @@ const EndreHUnd = () => {
                 </div>
                 <div>
                     <button onClick={() => navigate("/")}>Avbryt</button>
-                    <button type="submit">Endre hund</button>
+                    <button type="submit">Lag ny hund</button>
                 </div>
             </form>
         </div>
     );
 };
 
-export default EndreHUnd;
+export default NyHund;

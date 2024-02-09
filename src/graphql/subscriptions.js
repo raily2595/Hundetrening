@@ -2,8 +2,11 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateKurs = /* GraphQL */ `
-  subscription OnCreateKurs($filter: ModelSubscriptionKursFilterInput) {
-    onCreateKurs(filter: $filter) {
+  subscription OnCreateKurs(
+    $filter: ModelSubscriptionKursFilterInput
+    $owner: String
+  ) {
+    onCreateKurs(filter: $filter, owner: $owner) {
       id
       kursholder
       Hendelse {
@@ -17,6 +20,7 @@ export const onCreateKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -35,14 +39,17 @@ export const onCreateKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -51,13 +58,17 @@ export const onCreateKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
 `;
 export const onUpdateKurs = /* GraphQL */ `
-  subscription OnUpdateKurs($filter: ModelSubscriptionKursFilterInput) {
-    onUpdateKurs(filter: $filter) {
+  subscription OnUpdateKurs(
+    $filter: ModelSubscriptionKursFilterInput
+    $owner: String
+  ) {
+    onUpdateKurs(filter: $filter, owner: $owner) {
       id
       kursholder
       Hendelse {
@@ -71,6 +82,7 @@ export const onUpdateKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -89,14 +101,17 @@ export const onUpdateKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -105,13 +120,17 @@ export const onUpdateKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
 `;
 export const onDeleteKurs = /* GraphQL */ `
-  subscription OnDeleteKurs($filter: ModelSubscriptionKursFilterInput) {
-    onDeleteKurs(filter: $filter) {
+  subscription OnDeleteKurs(
+    $filter: ModelSubscriptionKursFilterInput
+    $owner: String
+  ) {
+    onDeleteKurs(filter: $filter, owner: $owner) {
       id
       kursholder
       Hendelse {
@@ -125,6 +144,7 @@ export const onDeleteKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -143,14 +163,17 @@ export const onDeleteKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -159,57 +182,70 @@ export const onDeleteKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
 `;
 export const onCreateLoep = /* GraphQL */ `
-  subscription OnCreateLoep($filter: ModelSubscriptionLoepFilterInput) {
-    onCreateLoep(filter: $filter) {
+  subscription OnCreateLoep(
+    $filter: ModelSubscriptionLoepFilterInput
+    $owner: String
+  ) {
+    onCreateLoep(filter: $filter, owner: $owner) {
       id
       fokus
       egenvurdering
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onUpdateLoep = /* GraphQL */ `
-  subscription OnUpdateLoep($filter: ModelSubscriptionLoepFilterInput) {
-    onUpdateLoep(filter: $filter) {
+  subscription OnUpdateLoep(
+    $filter: ModelSubscriptionLoepFilterInput
+    $owner: String
+  ) {
+    onUpdateLoep(filter: $filter, owner: $owner) {
       id
       fokus
       egenvurdering
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onDeleteLoep = /* GraphQL */ `
-  subscription OnDeleteLoep($filter: ModelSubscriptionLoepFilterInput) {
-    onDeleteLoep(filter: $filter) {
+  subscription OnDeleteLoep(
+    $filter: ModelSubscriptionLoepFilterInput
+    $owner: String
+  ) {
+    onDeleteLoep(filter: $filter, owner: $owner) {
       id
       fokus
       egenvurdering
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -217,8 +253,9 @@ export const onDeleteLoep = /* GraphQL */ `
 export const onCreateKonkurranse = /* GraphQL */ `
   subscription OnCreateKonkurranse(
     $filter: ModelSubscriptionKonkurranseFilterInput
+    $owner: String
   ) {
-    onCreateKonkurranse(filter: $filter) {
+    onCreateKonkurranse(filter: $filter, owner: $owner) {
       id
       Hendelse {
         id
@@ -231,6 +268,7 @@ export const onCreateKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -241,10 +279,11 @@ export const onCreateKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -253,6 +292,7 @@ export const onCreateKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -260,8 +300,9 @@ export const onCreateKonkurranse = /* GraphQL */ `
 export const onUpdateKonkurranse = /* GraphQL */ `
   subscription OnUpdateKonkurranse(
     $filter: ModelSubscriptionKonkurranseFilterInput
+    $owner: String
   ) {
-    onUpdateKonkurranse(filter: $filter) {
+    onUpdateKonkurranse(filter: $filter, owner: $owner) {
       id
       Hendelse {
         id
@@ -274,6 +315,7 @@ export const onUpdateKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -284,10 +326,11 @@ export const onUpdateKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -296,6 +339,7 @@ export const onUpdateKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -303,8 +347,9 @@ export const onUpdateKonkurranse = /* GraphQL */ `
 export const onDeleteKonkurranse = /* GraphQL */ `
   subscription OnDeleteKonkurranse(
     $filter: ModelSubscriptionKonkurranseFilterInput
+    $owner: String
   ) {
-    onDeleteKonkurranse(filter: $filter) {
+    onDeleteKonkurranse(filter: $filter, owner: $owner) {
       id
       Hendelse {
         id
@@ -317,6 +362,7 @@ export const onDeleteKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -327,10 +373,11 @@ export const onDeleteKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -339,6 +386,7 @@ export const onDeleteKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -346,8 +394,9 @@ export const onDeleteKonkurranse = /* GraphQL */ `
 export const onCreateRepetisjon = /* GraphQL */ `
   subscription OnCreateRepetisjon(
     $filter: ModelSubscriptionRepetisjonFilterInput
+    $owner: String
   ) {
-    onCreateRepetisjon(filter: $filter) {
+    onCreateRepetisjon(filter: $filter, owner: $owner) {
       id
       navn
       resultat
@@ -355,6 +404,7 @@ export const onCreateRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -362,8 +412,9 @@ export const onCreateRepetisjon = /* GraphQL */ `
 export const onUpdateRepetisjon = /* GraphQL */ `
   subscription OnUpdateRepetisjon(
     $filter: ModelSubscriptionRepetisjonFilterInput
+    $owner: String
   ) {
-    onUpdateRepetisjon(filter: $filter) {
+    onUpdateRepetisjon(filter: $filter, owner: $owner) {
       id
       navn
       resultat
@@ -371,6 +422,7 @@ export const onUpdateRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -378,8 +430,9 @@ export const onUpdateRepetisjon = /* GraphQL */ `
 export const onDeleteRepetisjon = /* GraphQL */ `
   subscription OnDeleteRepetisjon(
     $filter: ModelSubscriptionRepetisjonFilterInput
+    $owner: String
   ) {
-    onDeleteRepetisjon(filter: $filter) {
+    onDeleteRepetisjon(filter: $filter, owner: $owner) {
       id
       navn
       resultat
@@ -387,13 +440,17 @@ export const onDeleteRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onCreateOekt = /* GraphQL */ `
-  subscription OnCreateOekt($filter: ModelSubscriptionOektFilterInput) {
-    onCreateOekt(filter: $filter) {
+  subscription OnCreateOekt(
+    $filter: ModelSubscriptionOektFilterInput
+    $owner: String
+  ) {
+    onCreateOekt(filter: $filter, owner: $owner) {
       id
       treningID
       fokus
@@ -408,21 +465,27 @@ export const onCreateOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onUpdateOekt = /* GraphQL */ `
-  subscription OnUpdateOekt($filter: ModelSubscriptionOektFilterInput) {
-    onUpdateOekt(filter: $filter) {
+  subscription OnUpdateOekt(
+    $filter: ModelSubscriptionOektFilterInput
+    $owner: String
+  ) {
+    onUpdateOekt(filter: $filter, owner: $owner) {
       id
       treningID
       fokus
@@ -437,21 +500,27 @@ export const onUpdateOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onDeleteOekt = /* GraphQL */ `
-  subscription OnDeleteOekt($filter: ModelSubscriptionOektFilterInput) {
-    onDeleteOekt(filter: $filter) {
+  subscription OnDeleteOekt(
+    $filter: ModelSubscriptionOektFilterInput
+    $owner: String
+  ) {
+    onDeleteOekt(filter: $filter, owner: $owner) {
       id
       treningID
       fokus
@@ -466,21 +535,27 @@ export const onDeleteOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onCreateHendelse = /* GraphQL */ `
-  subscription OnCreateHendelse($filter: ModelSubscriptionHendelseFilterInput) {
-    onCreateHendelse(filter: $filter) {
+  subscription OnCreateHendelse(
+    $filter: ModelSubscriptionHendelseFilterInput
+    $owner: String
+  ) {
+    onCreateHendelse(filter: $filter, owner: $owner) {
       id
       navn
       sted
@@ -491,13 +566,17 @@ export const onCreateHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onUpdateHendelse = /* GraphQL */ `
-  subscription OnUpdateHendelse($filter: ModelSubscriptionHendelseFilterInput) {
-    onUpdateHendelse(filter: $filter) {
+  subscription OnUpdateHendelse(
+    $filter: ModelSubscriptionHendelseFilterInput
+    $owner: String
+  ) {
+    onUpdateHendelse(filter: $filter, owner: $owner) {
       id
       navn
       sted
@@ -508,13 +587,17 @@ export const onUpdateHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onDeleteHendelse = /* GraphQL */ `
-  subscription OnDeleteHendelse($filter: ModelSubscriptionHendelseFilterInput) {
-    onDeleteHendelse(filter: $filter) {
+  subscription OnDeleteHendelse(
+    $filter: ModelSubscriptionHendelseFilterInput
+    $owner: String
+  ) {
+    onDeleteHendelse(filter: $filter, owner: $owner) {
       id
       navn
       sted
@@ -525,13 +608,17 @@ export const onDeleteHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
 `;
 export const onCreateTrening = /* GraphQL */ `
-  subscription OnCreateTrening($filter: ModelSubscriptionTreningFilterInput) {
-    onCreateTrening(filter: $filter) {
+  subscription OnCreateTrening(
+    $filter: ModelSubscriptionTreningFilterInput
+    $owner: String
+  ) {
+    onCreateTrening(filter: $filter, owner: $owner) {
       id
       Hendelse {
         id
@@ -544,6 +631,7 @@ export const onCreateTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -562,14 +650,17 @@ export const onCreateTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -578,13 +669,17 @@ export const onCreateTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
 `;
 export const onUpdateTrening = /* GraphQL */ `
-  subscription OnUpdateTrening($filter: ModelSubscriptionTreningFilterInput) {
-    onUpdateTrening(filter: $filter) {
+  subscription OnUpdateTrening(
+    $filter: ModelSubscriptionTreningFilterInput
+    $owner: String
+  ) {
+    onUpdateTrening(filter: $filter, owner: $owner) {
       id
       Hendelse {
         id
@@ -597,6 +692,7 @@ export const onUpdateTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -615,14 +711,17 @@ export const onUpdateTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -631,13 +730,17 @@ export const onUpdateTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
 `;
 export const onDeleteTrening = /* GraphQL */ `
-  subscription OnDeleteTrening($filter: ModelSubscriptionTreningFilterInput) {
-    onDeleteTrening(filter: $filter) {
+  subscription OnDeleteTrening(
+    $filter: ModelSubscriptionTreningFilterInput
+    $owner: String
+  ) {
+    onDeleteTrening(filter: $filter, owner: $owner) {
       id
       Hendelse {
         id
@@ -650,6 +753,7 @@ export const onDeleteTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -668,14 +772,17 @@ export const onDeleteTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -684,6 +791,7 @@ export const onDeleteTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
@@ -700,7 +808,42 @@ export const onCreateHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner
@@ -720,7 +863,42 @@ export const onUpdateHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner
@@ -740,7 +918,42 @@ export const onDeleteHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner

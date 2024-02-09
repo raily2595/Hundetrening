@@ -51,8 +51,8 @@ type EagerLoep = {
   readonly resultat?: string | null;
   readonly notat?: string | null;
   readonly dommer?: string | null;
-  readonly bilde?: string | null;
   readonly konkurranseID: string;
+  readonly hundID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -68,8 +68,8 @@ type LazyLoep = {
   readonly resultat?: string | null;
   readonly notat?: string | null;
   readonly dommer?: string | null;
-  readonly bilde?: string | null;
   readonly konkurranseID: string;
+  readonly hundID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -158,6 +158,7 @@ type EagerOekt = {
   readonly notat?: string | null;
   readonly Repetisjons?: (Repetisjon | null)[] | null;
   readonly kursID?: string | null;
+  readonly hundID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -174,6 +175,7 @@ type LazyOekt = {
   readonly notat?: string | null;
   readonly Repetisjons: AsyncCollection<Repetisjon>;
   readonly kursID?: string | null;
+  readonly hundID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -195,8 +197,8 @@ type EagerHendelse = {
   readonly miljoe?: string | null;
   readonly dato?: string | null;
   readonly type?: string | null;
-  readonly handleliste?: (string | null)[] | null;
-  readonly pakkeliste?: (string | null)[] | null;
+  readonly handleliste?: string | null;
+  readonly pakkeliste?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -212,8 +214,8 @@ type LazyHendelse = {
   readonly miljoe?: string | null;
   readonly dato?: string | null;
   readonly type?: string | null;
-  readonly handleliste?: (string | null)[] | null;
-  readonly pakkeliste?: (string | null)[] | null;
+  readonly handleliste?: string | null;
+  readonly pakkeliste?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -267,7 +269,8 @@ type EagerHund = {
   readonly titler?: (string | null)[] | null;
   readonly rase?: string | null;
   readonly farge?: string | null;
-  readonly bilde?: string | null;
+  readonly Loeps?: (Loep | null)[] | null;
+  readonly Oekts?: (Loep | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -283,7 +286,8 @@ type LazyHund = {
   readonly titler?: (string | null)[] | null;
   readonly rase?: string | null;
   readonly farge?: string | null;
-  readonly bilde?: string | null;
+  readonly Loeps: AsyncCollection<Loep>;
+  readonly Oekts: AsyncCollection<Loep>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

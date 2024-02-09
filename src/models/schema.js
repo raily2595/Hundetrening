@@ -87,7 +87,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -145,15 +148,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "bilde": {
-                    "name": "bilde",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "konkurranseID": {
                     "name": "konkurranseID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "hundID": {
+                    "name": "hundID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
@@ -193,11 +196,23 @@ export const schema = {
                     }
                 },
                 {
+                    "type": "key",
+                    "properties": {
+                        "name": "byHund",
+                        "fields": [
+                            "hundID"
+                        ]
+                    }
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -290,7 +305,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -379,7 +397,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -453,6 +474,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "hundID": {
+                    "name": "hundID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -496,11 +524,23 @@ export const schema = {
                     }
                 },
                 {
+                    "type": "key",
+                    "properties": {
+                        "name": "byHund",
+                        "fields": [
+                            "hundID"
+                        ]
+                    }
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -560,19 +600,17 @@ export const schema = {
                 },
                 "handleliste": {
                     "name": "handleliste",
-                    "isArray": true,
+                    "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
+                    "attributes": []
                 },
                 "pakkeliste": {
                     "name": "pakkeliste",
-                    "isArray": true,
+                    "isArray": false,
                     "type": "String",
                     "isRequired": false,
-                    "attributes": [],
-                    "isArrayNullable": true
+                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -603,7 +641,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -696,7 +737,10 @@ export const schema = {
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
+                                "identityClaim": "cognito:username",
                                 "operations": [
                                     "create",
                                     "update",
@@ -755,12 +799,37 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "bilde": {
-                    "name": "bilde",
-                    "isArray": false,
-                    "type": "String",
+                "Loeps": {
+                    "name": "Loeps",
+                    "isArray": true,
+                    "type": {
+                        "model": "Loep"
+                    },
                     "isRequired": false,
-                    "attributes": []
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "hundID"
+                        ]
+                    }
+                },
+                "Oekts": {
+                    "name": "Oekts",
+                    "isArray": true,
+                    "type": {
+                        "model": "Loep"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "hundID"
+                        ]
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -811,5 +880,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "9af8c31ef8da7dfed3302cf0ec178fd6"
+    "version": "9e5677ad21eaa6c2bfe55082be151a85"
 };

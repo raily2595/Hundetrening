@@ -17,6 +17,7 @@ export const getKurs = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -35,14 +36,17 @@ export const getKurs = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -51,6 +55,7 @@ export const getKurs = /* GraphQL */ `
       createdAt
       updatedAt
       kursHendelseId
+      owner
       __typename
     }
   }
@@ -76,6 +81,7 @@ export const listKurs = /* GraphQL */ `
           pakkeliste
           createdAt
           updatedAt
+          owner
           __typename
         }
         Oekter {
@@ -94,14 +100,17 @@ export const listKurs = /* GraphQL */ `
                 oektID
                 createdAt
                 updatedAt
+                owner
                 __typename
               }
               nextToken
               __typename
             }
             kursID
+            hundID
             createdAt
             updatedAt
+            owner
             __typename
           }
           nextToken
@@ -110,6 +119,7 @@ export const listKurs = /* GraphQL */ `
         createdAt
         updatedAt
         kursHendelseId
+        owner
         __typename
       }
       nextToken
@@ -126,10 +136,11 @@ export const getLoep = /* GraphQL */ `
       resultat
       notat
       dommer
-      bilde
       konkurranseID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -148,10 +159,11 @@ export const listLoeps = /* GraphQL */ `
         resultat
         notat
         dommer
-        bilde
         konkurranseID
+        hundID
         createdAt
         updatedAt
+        owner
         __typename
       }
       nextToken
@@ -181,10 +193,45 @@ export const loepsByKonkurranseID = /* GraphQL */ `
         resultat
         notat
         dommer
-        bilde
         konkurranseID
+        hundID
         createdAt
         updatedAt
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const loepsByHundID = /* GraphQL */ `
+  query LoepsByHundID(
+    $hundID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelLoepFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    loepsByHundID(
+      hundID: $hundID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        fokus
+        egenvurdering
+        resultat
+        notat
+        dommer
+        konkurranseID
+        hundID
+        createdAt
+        updatedAt
+        owner
         __typename
       }
       nextToken
@@ -207,6 +254,7 @@ export const getKonkurranse = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Loeper {
@@ -217,10 +265,11 @@ export const getKonkurranse = /* GraphQL */ `
           resultat
           notat
           dommer
-          bilde
           konkurranseID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -229,6 +278,7 @@ export const getKonkurranse = /* GraphQL */ `
       createdAt
       updatedAt
       konkurranseHendelseId
+      owner
       __typename
     }
   }
@@ -253,6 +303,7 @@ export const listKonkurranses = /* GraphQL */ `
           pakkeliste
           createdAt
           updatedAt
+          owner
           __typename
         }
         Loeper {
@@ -263,10 +314,11 @@ export const listKonkurranses = /* GraphQL */ `
             resultat
             notat
             dommer
-            bilde
             konkurranseID
+            hundID
             createdAt
             updatedAt
+            owner
             __typename
           }
           nextToken
@@ -275,6 +327,7 @@ export const listKonkurranses = /* GraphQL */ `
         createdAt
         updatedAt
         konkurranseHendelseId
+        owner
         __typename
       }
       nextToken
@@ -292,6 +345,7 @@ export const getRepetisjon = /* GraphQL */ `
       oektID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -311,6 +365,7 @@ export const listRepetisjons = /* GraphQL */ `
         oektID
         createdAt
         updatedAt
+        owner
         __typename
       }
       nextToken
@@ -341,6 +396,7 @@ export const repetisjonsByOektID = /* GraphQL */ `
         oektID
         createdAt
         updatedAt
+        owner
         __typename
       }
       nextToken
@@ -365,14 +421,17 @@ export const getOekt = /* GraphQL */ `
           oektID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
         __typename
       }
       kursID
+      hundID
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -399,14 +458,17 @@ export const listOekts = /* GraphQL */ `
             oektID
             createdAt
             updatedAt
+            owner
             __typename
           }
           nextToken
           __typename
         }
         kursID
+        hundID
         createdAt
         updatedAt
+        owner
         __typename
       }
       nextToken
@@ -444,14 +506,17 @@ export const oektsByTreningID = /* GraphQL */ `
             oektID
             createdAt
             updatedAt
+            owner
             __typename
           }
           nextToken
           __typename
         }
         kursID
+        hundID
         createdAt
         updatedAt
+        owner
         __typename
       }
       nextToken
@@ -489,14 +554,65 @@ export const oektsByKursID = /* GraphQL */ `
             oektID
             createdAt
             updatedAt
+            owner
             __typename
           }
           nextToken
           __typename
         }
         kursID
+        hundID
         createdAt
         updatedAt
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const oektsByHundID = /* GraphQL */ `
+  query OektsByHundID(
+    $hundID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelOektFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    oektsByHundID(
+      hundID: $hundID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        treningID
+        fokus
+        egenvurdering
+        notat
+        Repetisjons {
+          items {
+            id
+            navn
+            resultat
+            notat
+            oektID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        kursID
+        hundID
+        createdAt
+        updatedAt
+        owner
         __typename
       }
       nextToken
@@ -517,6 +633,7 @@ export const getHendelse = /* GraphQL */ `
       pakkeliste
       createdAt
       updatedAt
+      owner
       __typename
     }
   }
@@ -539,6 +656,7 @@ export const listHendelses = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       nextToken
@@ -561,6 +679,7 @@ export const getTrening = /* GraphQL */ `
         pakkeliste
         createdAt
         updatedAt
+        owner
         __typename
       }
       Oekter {
@@ -579,14 +698,17 @@ export const getTrening = /* GraphQL */ `
               oektID
               createdAt
               updatedAt
+              owner
               __typename
             }
             nextToken
             __typename
           }
           kursID
+          hundID
           createdAt
           updatedAt
+          owner
           __typename
         }
         nextToken
@@ -595,6 +717,7 @@ export const getTrening = /* GraphQL */ `
       createdAt
       updatedAt
       treningHendelseId
+      owner
       __typename
     }
   }
@@ -619,6 +742,7 @@ export const listTrenings = /* GraphQL */ `
           pakkeliste
           createdAt
           updatedAt
+          owner
           __typename
         }
         Oekter {
@@ -637,14 +761,17 @@ export const listTrenings = /* GraphQL */ `
                 oektID
                 createdAt
                 updatedAt
+                owner
                 __typename
               }
               nextToken
               __typename
             }
             kursID
+            hundID
             createdAt
             updatedAt
+            owner
             __typename
           }
           nextToken
@@ -653,6 +780,7 @@ export const listTrenings = /* GraphQL */ `
         createdAt
         updatedAt
         treningHendelseId
+        owner
         __typename
       }
       nextToken
@@ -669,7 +797,42 @@ export const getHund = /* GraphQL */ `
       titler
       rase
       farge
-      bilde
+      Loeps {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      Oekts {
+        items {
+          id
+          fokus
+          egenvurdering
+          resultat
+          notat
+          dommer
+          konkurranseID
+          hundID
+          createdAt
+          updatedAt
+          owner
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner
@@ -691,7 +854,42 @@ export const listHunds = /* GraphQL */ `
         titler
         rase
         farge
-        bilde
+        Loeps {
+          items {
+            id
+            fokus
+            egenvurdering
+            resultat
+            notat
+            dommer
+            konkurranseID
+            hundID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        Oekts {
+          items {
+            id
+            fokus
+            egenvurdering
+            resultat
+            notat
+            dommer
+            konkurranseID
+            hundID
+            createdAt
+            updatedAt
+            owner
+            __typename
+          }
+          nextToken
+          __typename
+        }
         createdAt
         updatedAt
         owner

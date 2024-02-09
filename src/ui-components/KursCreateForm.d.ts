@@ -39,6 +39,7 @@ export declare type KursCreateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: KursCreateFormInputValues) => KursCreateFormInputValues;
     onSuccess?: (fields: KursCreateFormInputValues) => void;
     onError?: (fields: KursCreateFormInputValues, errorMessage: string) => void;
+    onCancel?: () => void;
     onChange?: (fields: KursCreateFormInputValues) => KursCreateFormInputValues;
     onValidate?: KursCreateFormValidationValues;
 } & React.CSSProperties>;

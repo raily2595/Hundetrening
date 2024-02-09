@@ -1,4 +1,15 @@
 {
-  "menytekst1": "Profil",
-  "menytekst2": "Startside"
+  "startside": "Startside",
+  "profil": "Profil",
+  "nyhund": "Legg til ny hund",
+  "oppHund": "Oppdater info",
+  "nytrening": "Legg til ny trening",
+  "nykonk": "Legg til ny konkurranse",
+  "nyttkurs": "Legg til nytt kurs",
+  "nyoekt": "Legg til ny økt",
+  "nyttloep": "Legg til nytt Løp",
+  "nyrep": "Legg til ny repetisjon",
+  "trening": "Vis trening",
+  "konkurranse": "Vis konkurranse",
+  "kurs": "Vis kurs"
 }
